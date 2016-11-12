@@ -1,0 +1,8 @@
+# Access github website: https://github.com/ngocgiang2512/
+# Repositories > New > enter new repo name (learnFE)
+# copy web url of repo
+# on computer, open git bash
+$ git clone https://github.com/ngocgiang2512/learnFE.git
+$ cd learnFE
+# add/edit/remove files
+# push file

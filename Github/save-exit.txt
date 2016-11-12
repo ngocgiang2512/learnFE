@@ -1,0 +1,3 @@
+# VIM for Window, save and exit from a file
+
+Press ESC to make sure we are out of the edition mode and then type: ':wq' > enter
