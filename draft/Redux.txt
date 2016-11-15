@@ -1,0 +1,64 @@
+Redux
+
+Actions
+
+An action MUST
+- be a plain Javascript object
+- have a "type" property
+
+{
+  type: 'ADD_TODO'
+}
+
+We send data(action) from the application to the store, using store.dispatch()
+
+
+Action Creators are exactly that - functions that simply return an action
+
+function addTodo(text) {
+  return {
+    type: 'ADD_TODO',
+    text
+  }
+}
+
+The dispatch() function can be accessed directly from the store as store.dispatch(), but more likely we'll access it using a helper like react-redux's connect().
+
+Reducers
+In Redux, all application state is stored as a single object.
+Try to keep the data separate from the UI state.
+
+function todos(state = [], action) {
+  switch (action.type) {
+    case ADD_TODO:
+      return [
+        ...state,
+        {
+          text: action.text,
+          completed: false
+        }
+      ]    
+    default:
+      return state
+  }
+}
+
+The reducer is a pure function that takes the previous state and an action, and returns the next state.
+
+Store
+The Store is an object.
+- holds application state
+- allows access to state via getState()
+- allows state to be updated via dispatch(action)
+- register listeners via subscribe(listener)
+- handle unregistering of listeners via the function returned by subscribe(listener)
+
+We'll only have a single store in a Redux application. We'll use 'reducer composition' instead of many stores.
+
+We used combineReducers() to combine several reducers into one.
+
+let store = createStore(todos)
+
+source:
+- https://github.com/acdlite/flux-standard-action
+- http://redux.js.org/docs/basics/Actions.html
