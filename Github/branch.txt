@@ -1,0 +1,11 @@
+# check all branch existing
+$ git branch
+
+# create new branch
+$ git checkout -b task6789
+
+# switch to other branch
+$ git checkout task1234
+
+# delete branch
+$ git branch -D task6789
