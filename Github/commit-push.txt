@@ -1,0 +1,25 @@
+# Commit and push the first time
+... add/edit/remove file(s)
+$ git status
+$ git add .
+$ git status
+$ git commit -m "Commit message"
+$ git push upstream master
+
+# Already pushed - no edit commit message 
+... add/edit/remove file(s)
+$ git status
+$ git add .
+$ git status
+$ git commit --amend -no-edit
+$ git push upstream master -f
+
+# Already pushed - edit commit message 
+... add/edit/remove file(s)
+$ git status
+$ git add .
+$ git status
+$ git commit --amend
+... change commit message
+# Esc > :wq > enter
+$ git push upstream master -f

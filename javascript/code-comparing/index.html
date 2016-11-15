@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Code Comparing</title>
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/prism.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- row -->
+    <div class="row">
+      <h3>Arrow Function</h3>
+      <div class="col-left">
+        <pre><code class="language-javascript">var f1 = () => 12;</code></pre>
+      </div>
+      <div class="col-right">
+        <pre><code class="language-javascript">var f1 = function f1() {
+  return 12;
+};</code></pre>
+      </div>
+    </div>
+    <!-- ./ row -->
+
+    <!-- row -->
+    <div class="row">
+      <h3>Arrow Function</h3>
+      <div class="col-left">
+        <pre><code class="language-javascript">var f2 = x => x * 2;</code></pre>
+      </div>
+      <div class="col-right">
+        <pre><code class="language-javascript">var f2 = function f2(x) {
+  return x * 2;
+};</code></pre>
+      </div>
+    </div>
+    <!-- ./ row -->
+
+    <!-- row -->
+    <div class="row">
+      <h3>Export</h3>
+      <div class="col-left">
+        <pre><code class="language-javascript">export const addTodo = (text) => {
+  return {
+    type: 'ADD_TODO',
+    text
+  }
+}</code></pre>
+      </div>
+      <div class="col-right">
+        <pre><code class="language-javascript">export function addTodo(text) {
+  return { 
+    type: 'ADD_TODO', 
+    text 
+  }
+}</code></pre>
+      </div>
+    </div>
+    <!-- ./ row -->
+
+    <!-- row -->
+    <div class="row">
+      <h3>Import</h3>
+      <div class="col-left">
+        <pre><code class="language-javascript">import React from 'react';
+class App extends React.Component {...}</code></pre>
+      </div>
+      <div class="col-right">
+        <pre><code class="language-javascript">import {Component} from 'react';
+class App extends Component {...}</code></pre>
+      </div>
+    </div>
+    <!-- ./ row -->
+
+    <!-- row -->
+    <div class="row">
+      <h3>Default Value</h3>
+      <div class="col-left">
+        <pre><code class="language-javascript">function todoApp(state = initialState, action) {
+  return state
+}</code></pre>
+      </div>
+      <div class="col-right">
+        <pre><code class="language-javascript">function todoApp(state, action) {
+  if (typeof state === 'undefined') {
+    return initialState
+  }
+  return state
+}</code></pre>
+      </div>
+    </div>
+    <!-- ./ row -->
+
+  </div>
+  <script src="js/prism.js"></script>
+</body>
+</html>

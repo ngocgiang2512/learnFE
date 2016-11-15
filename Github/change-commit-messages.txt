@@ -1,0 +1,11 @@
+# Rewriting the most recent commit message, commit pushed
+$ git commit --amend
+# edit commit message
+# Esc > :wq > enter
+$ git push upstream master -f
+
+# Amending older or multiple commit messages
+$ git rebase -i HEAD~3 # Displays a list of the last 3 commits on the current branch
+# edit message(s) then replace "pick" with "reword" before each commit message you want to change
+# Esc > :wq > enter
+$ git push upstream master -f
