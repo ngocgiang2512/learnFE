@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Javascript Object</title>
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/prism.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <section class="content">
+      <h1>Javascript Object</h3>
+
+      <p>Developers create their own <i>objects</i> by creating <i>instances</i> of the <i>Object type</i> and adding properties and/or methods to it.</p>
+      <p>New objects are created by using the <i>new</i> operator followed by a <i>constructor</i>. A constructor is simply a function whose purpose is to create a new object.</p>
+
+      <pre><code class="language-javascript">var person = new Object();</code></pre>
+
+      <p><b>Process:</b></p>
+      <ul>
+        <li>- <i>Object()</i> constructor creates a simple <i>object</i> with only the default properties and methods</li>
+        <li>- creates a new <i>instance</i> of the <i>Object</i> refference type</li>
+        <li>- stores the <i>instance</i> in the variable <i>person</i></li>
+      </ul>
+
+    </section>
+
+    <section class="content">
+      <p><b>Create an instance of an Object</b></p>
+      <p>There are two ways to explicitly create an instance of Object:</p>
+
+      <div class="row">
+        <div class="col-left">
+          <p class="center"><b>new operator</b></p>
+          <pre><code class="language-javascript">var person = new Object();
+person.name = "Nicholas";
+person.age = 29;</code></pre>
+        </div>
+        <div class="col-right">
+          <p class="center"><b>object literal notation</b></p>
+          <pre><code class="language-javascript">var person = {
+  name: "Nicholas",
+  age: 29
+}</code></pre>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="js/prism.js"></script>
+</body>
+</html>

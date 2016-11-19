@@ -58,9 +58,47 @@ body {
   background-color: #fff;
 }
 
-h3 {
+h1, h2, h3, h4, h5, h6 {
   color: #444;
   font-weight: normal;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+p {
+  margin: 0 0 10px;
+  line-height: 1.4;
+}
+
+ul {
+  padding-left: 15px;
+  margin-top: 0;
+}
+
+ul li {
+  list-style: none;
+  line-height: 1.6;
+}
+
+i {
+  color: #dd4a68;
+}
+
+.content {
+  background-color: #fff;
+  padding: 15px 30px 20px;
+}
+
+.content :not(pre) > code[class*="language-"], .content pre[class*="language-"],
+.content .token.operator, .content .token.entity, .content .token.url, .content .language-css .token.string, .content .style .token.string {
+  background-color: #eee;
+}
+
+.content pre {
+  margin-bottom: 15px;
+}
+
+.center {
   text-align: center;
 }
 
