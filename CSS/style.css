@@ -15,7 +15,7 @@
   height: 0; 
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;  
-  border-bottom: 10px solid black;
+  border-bottom: 10px solid #fff;
 }
 
 .arrow-down {
@@ -23,7 +23,7 @@
   height: 0; 
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;  
-  border-top: 10px solid #f00;
+  border-top: 10px solid #fff;
 }
 
 .arrow-right {
@@ -31,7 +31,7 @@
   height: 0; 
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;  
-  border-left: 10px solid green;
+  border-left: 10px solid #fff;
 }
 
 .arrow-left {
@@ -39,5 +39,5 @@
   height: 0; 
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;   
-  border-right:10px solid blue; 
+  border-right:10px solid #fff; 
 }
