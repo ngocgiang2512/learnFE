@@ -41,22 +41,66 @@
 
     <!-- row -->
     <div class="row">
-      <h3>Export</h3>
+      <h3>React Redux Arrow Function</h3>
       <div class="col-left">
-        <pre><code class="language-javascript">export const addTodo = (text) => {
-  return {
-    type: 'ADD_TODO',
-    text
-  }
-}</code></pre>
+        <pre><code class="language-javascript">const addTodo = (text) => ({
+  type: 'ADD_TODO',
+  text
+})</code></pre>
       </div>
       <div class="col-right">
-        <pre><code class="language-javascript">export function addTodo(text) {
-  return { 
-    type: 'ADD_TODO', 
-    text 
+        <pre><code class="language-javascript">var addTodo = function addTodo(text) {
+  return {
+    type: 'ADD_TODO',
+    text: text
+  };
+};</code></pre>
+      </div>
+
+      <div class="col-left">
+        <pre><code class="language-javascript">todoApp = combineReducers({
+  todos,
+  visibilityFilter
+})</code></pre>
+      </div>
+      <div class="col-right">
+        <pre><code class="language-javascript">var todoApp = combineReducers({
+  todos: todos,
+  visibilityFilter: visibilityFilter
+});</code></pre>
+      </div>
+    </div>
+    <!-- ./ row -->
+
+    <!-- row -->
+    <div class="row">
+      <h3>JSX vs raw Javascript</h3>
+      <div class="col-left">
+        <pre><code class="language-javascript">class HelloMessage extends React.Component {
+  render() {
+    return <div>Hello {this.props.name}</div>;
   }
-}</code></pre>
+}
+
+ReactDOM.render(<HelloMessage name="Jane" />, mountNode);</code></pre>
+      </div>
+      <div class="col-right">
+        <pre><code class="language-javascript">class HelloMessage extends React.Component {
+  render() {
+    return React.createElement(
+      "div",
+      null,
+      "Hello ",
+      this.props.name
+    );
+  }
+}
+
+ReactDOM.render(React.createElement(
+  HelloMessage, 
+  { name: "Jane" }
+  ), mountNode
+);</code></pre>
       </div>
     </div>
     <!-- ./ row -->

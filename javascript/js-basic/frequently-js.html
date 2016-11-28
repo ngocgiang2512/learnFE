@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frequently Javascript</title>
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/prism.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="wrapper frequently_js">
+
+    <!-- row -->
+    <div class="row">
+      <div class="col-left">
+        <h3>map()</h3>
+        <pre><code class="language-javascript">var numbers = [1, 2, 3, 2, 1];
+var result = numbers.map(function(item, index, array) {
+    return item * 2;
+});
+console.log(result);   // [2, 4, 6, 4, 2]</code></pre>
+      </div>
+        
+      <div class="col-right">
+        <h3>map() + arrow function</h3>
+        <pre><code class="language-javascript">var numbers = [1, 2, 3, 2, 1];
+let result = numbers.map(item => {
+  return item*3;
+})      
+console.log(result);   // [2, 4, 6, 4, 2]</code></pre>
+      </div>        
+        
+    </div>
+    <!-- ./ row -->    
+
+  </div>
+  <script src="js/prism.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+    var numbers = [1, 2, 3, 2, 1];
+    let result = numbers.map(item => {
+      return item*3;
+    })      
+    console.log(result);   // [2, 4, 6, 4, 2]
+  </script>
+</body>
+</html>
