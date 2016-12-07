@@ -1,0 +1,11 @@
+# trong trường hợp cần làm một task mới(pull b) phải dựa trên 1 task khác(pull  a), trong khi pull a vẫn chưa được merge
+$ git fetch upstream pull/36/head:pull36
+$ git checkout pull36
+$ git checkout -b pull40
+# // do task... (pull a changed)
+$ git rebase pull36
+$ (1/2) git rebase --skip
+# // (2/2) resolve conflicts
+$ git add .
+$ git rebase --continue
+$ git push
