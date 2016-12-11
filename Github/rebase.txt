@@ -1,0 +1,8 @@
+$ git checkout master
+$ git pull framgia master
+$ git checkout task123
+$ git rebase master
+# remove conflicts if exists
+$ git add .
+$ git rebase --continue
+$ git push origin task123 -f

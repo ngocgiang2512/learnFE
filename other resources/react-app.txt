@@ -1,0 +1,51 @@
+====================================================
+    Redux: How Redux works
+====================================================
+
+1. Components are given callback functions as props, which they call when a UI event happens
+2. Those callbacks create and dispatch actions based on the event
+3. Reducers process the actions, computing the new state
+4. The new state of the whole application goes into a single store.
+5. Components receive the new state as props and re-render themselves where needed.
+
+DG:
+<=> Components: UI event happents
+=> callbacks create and dispatch actions
+=> reducers: process actions, computing new state
+=> new state goes into store
+=> Components: receive the new state as props
+=> Components re-render themselves
+
+sources:
+https://camjackson.net/post/9-things-every-reactjs-beginner-should-know
+
+
+====================================================
+    ES6: import and export
+====================================================
+
+Folder Structure:
+/folder1
+    red.js
+    /folder2
+        green.js
+        blue.js
+        /folder3
+            white.js
+
+#import cùng folder
+import xxx from './blue'
+
+#import khác folder
+import xxx from './folder3/white'
+import xxx from '../red'
+
+#import default/not default
+export default const xxx = []
+export const yyy = []
+export const zzz = []
+
+import xxx from './blue'
+import { yyy } from './blue'
+import { yyy, zzz } from '/blue'
+
