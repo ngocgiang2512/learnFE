@@ -1,0 +1,35 @@
+====================================================
+    Node Packages: usage
+====================================================
+Webpack Dev Server
+This modules serves all our compiled files through a web server (by default on localhost:8080). In this way, it computing diffs and refreshing files don't include any disk I/O, providing a really blazing fast live reload.
+Webpack uses Socket.io to know when to refresh browser. We launched the Socket.io server, but didn't update our client script.
+npm install --save-dev webpack-dev-server
+webpack-dev-server --progress --colors
+
+React.js
+A javascript library for building user interfaces
+npm install --save-dev react
+
+React Hot Loader
+We already enabled live-reload. However, if we want to change the HelloLayer component, it will reload the whole page, losing data we entered in the input field.
+We can go a step further into our-live-reload implementatin, using react-hot-loader. This tool reloads only the React component we changed.
+npm install --save-dev react-hot-loader
+webpack-dev-server --hot --progress --colors
+
+HTTP Server
+Because of some browser restrictions, we can't open our page with file:// protocol anymore, we need a HTTP server. Let's use the simple no-configuration one: http-server
+npm install --save-dev http-server
+http-server -p 3000
+
+Babel
+Not all browsers are compatible with ES6, so we have to transpile ES6 into good old ES5.
+npm intall --save babel-loader
+
+SASS, CSS, and style loaders
+Webpack understands only JS, to compile SASS files, we need a SASS loader of course, but also a CSS and a style loaders.
+Basically explained, when we write require('style.scss'), SASS loader turns it into style.css, which should be then turned into Javascript with CSS loader, and finally embedded as styles using the style loader
+npm install --save-dev sass-loader css-loader style-loader
+
+source:
+https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-application-with-sass.html
