@@ -1,0 +1,220 @@
+React Redux Starter Kit Note - GiangDN
+
+====================================================
+  Features:
+====================================================
+
+- react
+- redux
+- react-router
+- webpack
+- babel
+- express
+- karma
+- eslint
+
+npm script
+- npm start: Serves our app at localhost:3000. HMR will be enabled in development
+
+
+====================================================
+  Application Structure
+====================================================
+
+|-- bin                    # build/start scripts
+|-- config                 # Project and build configurtions
+|-- public                 # Static public assets (not imported anywhere in source code)
+|-- server                 # Express application that provides webpack middleware
+   |-- main.js             # Server application entry point
+|-- src                    # Application source code
+   |-- index.html          # Main HTML page container for app
+   |-- main.js             # Application bootstrap and rendering
+   |-- components          # Global Reusable Presentational Components
+   |-- containers          # Global Reusable Container Components
+   |-- layouts             # Components that dictate major page structure
+       |-- CoreLayout.js   # CoreLayout with receives children for each route
+       |-- CoreLayout.scss # Styles related to the CoreLayout
+       |-- index.js        # Main file for layout
+   |-- routes              # Main route definitions and async split points
+       |-- index.js        # Bootstrap main application routes with store
+       |-- Home            # Fractal Route
+           |-- index.js    # Route definitions and async split points
+           |-- assets      # Assets required to render components
+           |-- components  # Presentational React Components
+           |-- routes      # Fractal sub-routes (optional)
+       |-- Counter         # Fractal Route
+           |-- index.js    # Route definitions and async split points
+           |-- assets      # Assets required to render components
+           |-- components  # Presentational React Components
+           |-- routes      # Fractal sub-routes (optional)
+   |-- store               # Redux-specifiec pieces
+       |-- createStore.js  # Create and instrument redux store
+       |-- reducers.js     # Reducer registry and injection
+   |-- styles              # Application-wide styles (generally settings)
+|-- tests                  # Unit tests
+
+====================================================
+  src/index.html
+====================================================
+
+<!DOCTYPE html>
+<html>
+<head>...</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>
+
+
+====================================================
+  src/main.js
+====================================================
+
+import createStore from './store/createSoter'
+import AppContainer from './containers/AppContainer'
+
+const initialState = window.__INITIAL_STATE__
+const store - createStore(initialState)
+
+let render = () => {
+  const routes = require('./routes/index').default(store)
+
+  ReactDOM.render(
+    <AppContainer store={store} routes={routes} />,
+    document.getElementById('root')
+  )
+}
+
+render()
+
+
+====================================================
+  src/containers/AppContainer.js
+====================================================
+
+import { browserHistory, Router } from 'react-router'
+import { Provider } from 'react-redux'
+
+class AppContainer extends Component {
+  render() {
+    const {routes, store} = this.props
+
+    return (
+      <Provider store={store}>
+        <Router history={browserHistory} children={routes} />
+      </Provider>
+    )
+  }
+}
+
+
+====================================================
+  src/store/createStore.js
+====================================================
+
+import { applyMiddleware, compose, createStore } from 'redux'
+import thunk from 'redux-thunk'
+import { browserHistory } from 'react-router'
+import makeRootReducer from './reducers'
+import { updateLocation } from './location'
+
+export default (initialState = {}) => {
+  const middleware = [thunk]
+
+  const enhancers = []
+
+  let composeEnhancers = compose
+
+  const store = createStore(
+    makeRootReducer(),
+    initialState,
+    composeEnhancers(
+      applyMiddelware(...middleware),
+      ...enhancers
+    )
+  )
+
+  store.asynReducers = {}
+
+  store.unsubscribeHistory = browserHistory.listen(updateLocation(store))
+
+  // ...
+
+  return store
+}
+
+
+====================================================
+  src/store/reducers.js
+====================================================
+
+import { combineReducers } from 'redux'
+import locationReducer from './location'
+
+export const makeRootReducer = (asynReducers) => {
+  return combineReducers({
+    location: locationReducer,
+    ...asynReducers
+  })
+}
+
+export const injectReducer = (store, { key, reducer }) => {
+  if (Object.hasOwnProperty.call(store.asyncReducers, key)) return
+
+  store.asyncReducers[key] = reducer
+  store.replaceReducer(makeRootReducer(store.asyncReducers))
+}
+
+export default makeRootReducer
+
+
+====================================================
+  src/routes/index.js
+====================================================
+
+import CoreLayout from '../layouts/CoreLayout/CoreLayout'
+import Home from './Home'
+import CounterRoute from './Counter'
+
+export const createRoutes = (store) => ({
+  path: '/',
+  component: CoreLayout,
+  indexRoute: Home,
+  childRoutes: [
+    CounterRoute(store)
+  ]
+})
+
+export default createRoutes
+
+
+====================================================
+  src/routes/Home/index.js
+====================================================
+
+import HomeView from './components/HomeView'
+
+export default {
+  component: HomeView
+}
+
+
+====================================================
+  src/routes/Counter/index.js
+====================================================
+
+import { injectReducer } from '../../store/reducers'
+
+export default (store) => ({
+  path: 'counter',
+  getComponent(nextState, cb) {
+    require.ensure([], (require) => {
+      const Counter = require('./containers/CounterContainer').default
+      const reducer = require('./modules/counter').default
+
+      injectReducer(store, { key: 'counter', reducer })
+
+      cb(nll, Counter)
+    })
+  }, 'counter')
+})
