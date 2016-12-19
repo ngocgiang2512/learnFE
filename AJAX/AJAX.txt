@@ -1,0 +1,60 @@
+====================================================
+    AJAX
+====================================================
+
+AJAX stands for Asynchronous Javascript And XML
+
+AJAX just uses a combination of:
+- A browser built-in XMLHttpRequest object (to request data from a web server)
+- Javascript and HTML DOM (to display or use the data)
+
+AJAX is a misleading name. AJAX applications might use XML to transport data, but it is equally common to transport data as plain text or JSON text.
+
+AJAX allows web pages to be updated asynchronously by exchanging data with a web server behind the scenes.
+
+====================================================
+    XMLHttpRequest Object (XHR)
+====================================================
+
+The XMLHttpRequest Object is used to exchange data with a server behind the scenes. This means that it is possible to update parts of a web page, without reloading the whole page.
+
+var xhr = new XMLHttpRequest();
+
+
+====================================================
+    XMLHttpRequest Object Properties
+====================================================
+
+- onreadystatechange: defines a function to be called when the readyState changes
+- readyState: holds the status of the XMLHttpRequest
++ 0: request not initialized
++ 1: server connection established
++ 2: request received
++ 3: processing request
++ 4: request finished and response is ready
+- status: returns the status-number of a request
++ 200: "OK"
++ 403: "Forbidden"
++ 404: "Not Found"
+- statusText: returns the status-text (e.g. "OK" or "Not Found")
+- responseText: returns the response data as a string
+- responseXML: returns the response data as XML data
+
+
+====================================================
+    XMLHttpRequest Object Properties
+====================================================
+
+- new XMLHttpRequest(): creates a new XMLHttpRequest object
+- open(method,url,async,user,psw): specifies the request
++ method: the request type GET or POST
++ url: the file location
++ sync true (asynchronous) or false (synchronous)
++ user: optional user name
++ psw: optional password
+- send(): sends the request to the server, used for GET requests
+- send(string): sends the request to the server, used for POST requests
+
+
+sources:
+http://www.w3schools.com/xml/ajax_intro.asp
