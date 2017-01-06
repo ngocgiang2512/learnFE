@@ -37,7 +37,7 @@ function todos(state = [], action) {
           text: action.text,
           completed: false
         }
-      ]    
+      ]
     default:
       return state
   }
@@ -62,3 +62,42 @@ let store = createStore(todos)
 source:
 - https://github.com/acdlite/flux-standard-action
 - http://redux.js.org/docs/basics/Actions.html
+
+====================================================
+  Redux - dispatch note
+====================================================
+
+The "vanilla" store implementation we get by calling 'createStore' only supports plain object actions and hands them immediately to the reducer.
+
+However, if we wrap 'createStore' with applyMiddleware, the middleware can interpret actions differently, and provide support for dispatching async actions. Async actions are usually asynchronous primitives like Promises, Observables, or thunks.
+
+Middleware is created by the community and does not ship with Redux by default. We need to explicitly install packages like redux-thunk or redux-promise to use it. We may also create our own middelware.
+
+To learn how to describe asynchronous API calls, read the current state inside action creators, perform side effects, or chain them to execute in a sequence.
+
+source:
+http://redux.js.org/docs/api/Store.html#dispatch
+
+
+====================================================
+  Redux - applyMiddelware
+====================================================
+
+applyMiddleware(...middlewares)
+
+Middleware is the suggested way to extend Redux with custom functionality. Middleware lets us warp the store's dispatch method for fun and profit. The key feature of middleware is that it is composable. Multiple middleware can be combined together, where each middleware requires no knowledge of what comes before of after it in the chain.
+
+The most common use case for middleware is to support asynchronous actions without much boilerplate code or a dependency on a library like Rx. It does so by letting we dispatch sync actions in addition to normal actions.
+
+For example, redux-thunk lets the action creators invert control by dispatching functions. They would receive dispatch as an argument and may call it asynchronously. Such functions are called thunks. Another example of middleware is redux-promise. It lets us dispatch a Promise async action, and pispatches a normal action when the Promise resolves.
+
+Middleware is not baked into createStore and is not a fundamental part of the Redux architecture, but we consider it useful enough to be supported right in the core. This way, there is a single standard way to extend dispatch in the ecosystem, and different middleware may compete in expressiveness and utility.
+
+Arguments:
+...middleware (arguments): Functions that conform to the Redux middleware API. Each middleware receives Store's dispatch and getState function as named arguments, and returns a function. That function will be given the next middleware's dispatch method, and is expected to return a function of action calling next(action) with a potentially different argument, or at a different time, or maybe not calling it at all. The last middleware in the chain will receive the real store's dispatch method as the next parameter, thus ending the chain. So, the middleware signature is ({ getState, dispatch }) => newxt => action
+
+Returns
+(Function) A store enhancer that applies the given middleware. The store enhancer signature is createStore => createStore but the easiest way to apply it is to pass it to createStore() as the last enhancer argument.
+
+source:
+http://redux.js.org/docs/api/applyMiddleware.html
