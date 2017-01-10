@@ -18,19 +18,32 @@
     const getMessage = () => "Hello ES6";
     document.getElementById('root').innerHTML = getMessage();
 
-    var obj1 = {
-      a: 'a',
-      b: 'b'
+    function formatTime(oldFormat) {
+      let newFormat = oldFormat.slice(0,4) + '年'
+      newFormat += oldFormat.slice(5,7) + '月'
+      newFormat += oldFormat.slice(8,10) + '日 '
+      newFormat += oldFormat.slice(11,16)
+      return newFormat
     }
 
-    let obj2 = {
-      a: 'c',
-      c: 'a'
-    }
+    let newBranches = [
+      {
+        name: 'Giang',
+        created_at: '2016-07-01T10:00:14.711+09:00',
+        updated_at: '2016-07-01T15:08:24.240+09:00'
+      },
+      {
+        name: 'Thanh',
+        created_at: '2016-08-01T10:00:14.711+09:00',
+        updated_at: '2016-08-01T15:08:24.240+09:00'
+      }
+    ]
 
-    var obj3 = Object.assign(obj1, obj2);
-
-    console.log(obj3);
+    newBranches.map(branch => {
+      branch.created_at = formatTime(branch.created_at);
+      branch.updated_at = formatTime(branch.updated_at)
+    })
+    console.log(newBranches);
   </script>
 
 </body>
