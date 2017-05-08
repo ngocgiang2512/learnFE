@@ -1,0 +1,217 @@
+// trường hợp có 2 commit
+git log -- oneline
+// copy id của commit 1
+git reset id
+git add .
+git commit --amend --no-edit
+
+git clone git@github.com:ngocgiang2512/WhytPlot_web.git
+git fetch origin
+git branch -a
+git checkout -b task76798 origin/task76798
+
+git diff file_2.rb
+
+fetch:  $ git fetch upstream pull/5/head:pull#5
+$ git pull upstream master
+
+// Unmodifying a Modified File
+git checkout -- abc.txt
+
+// rebase
+$ git rebase master
+// remove conflict
+$ git add .
+$ git rebase --continue
+$ git push origin task123 -f
+
+$ git clone
+$ git remote add framgia https://github.com/framgia/fph-web.git
+$ git remote -v
+# add/modify
+$ git status
+$ git add .
+$ git log
+$ git commit -m "test" # $ git commit --amend --no-edit
+$ git checkout -b test
+$ git push origin test -f
+
+git reflog
+git reset --hard HEAD@{5}
+git c
+
+
+git commit -m "Task #52580 Fix height for selecbox"
+git push origin task#52580 -f
+
+# check status
+git status
+
+# reset
+git reset --hard
+
+# see log
+git log
+
+git rebase --abort
+
+git show
+
+# red
+git.status
+
+git add .
+
+# blue
+git.status
+
+# the first commit
+git commit -m "Task #52580 Fix height for selecbox"
+
+# not the first commit
+git commit -m fix
+
+// gop 2 commit
+git rebase -i HEAD~2
+
+
+# thay pick = s //cho cacs commit thư 2 đen cuoi cung, an i de edit trên cmd
+# window:
+Esc :wq -> enter
+# ctrl + o, enter, Ctrl + x
+# comment fix
+# ctrl + o, enter, Ctrl + x
+
+# len github check
+
+# push
+git push origin task#52580 -f
+
+# new task
+git checkout
+git fetch upstream
+git merge upstream/master
+
+git checkout -b task#<id>
+or
+git checkout task#<id>
+git rebase master
+
+
+# Learn Git
+# source: https://try.github.io/levels/1/challenges/1
+
+1.1 Initialize a GIT repository (our teminal prompt is currently in a directory we decided to name "octobox")
+$ git init
+-> now "octobox" directory has an empty repository in /.git/ The repository is a hidden directory where Git operates.
+
+1.2 Check the current state of our project is
+$ git status
+
+1.3 If you create a new file or modify an existed file, you can see how the repository status changed
+$ git status
+
+1.4 Adding changes: to tell Git to start tracking changes, we need to add it to the staging area by using git add
+$ git add octocat.txt
+$ git add -A .  # where the dot stands for the current directory, so everything in and beneath it is added. The -A ensures even file deletions are included
+$ git reset <filename> remove a file or files from the staging area
+
+1.5 Checking for changes
+$ git status
+-> changes to be commited:  the file listed here are in the Staging Area, and they are not in our repository yet. We could add or remove files from the stage before we store them in the repository
+
+1.6 Comitting
+-> To store our staged changes, we run the "commit" command with a message describing what we've changed
+$ git commit -m "Add cute octocat story"
+
+1.7 Adding all changes
+-> Now we've added a bunch of .txt files into our directory. We can add all the new files using a wildcard with git add.
+-> widlcard: quotes, without quotes, our shell'll only execute the wildcard search within the current directory, it will not able to add the files inside of the other directory
+$ git add '*.txt'
+
+1.8 Committing all changes
+$ git commit -m 'Add all the octocat txt files'
+
+1.9 History: browse the commits to see what we changed
+-> use git log --summary to see more information for each commit. We can see where new files were added for the first time or where files are deleted
+$ git log
+
+1.10 Remote repositories
+-> to push our local repo to the GitHub server we'll need to add a remote repository
+-> git remote: Git doesn't care what you name your remotes, but it's typical to name your main one "origin"
+$ git remote add origin  https://github.com/try-git/try_git.git
+
+1.11 Pushing remotely
+-> The push command tells Git where to put our commits when we're ready. So let's push our local changes to our "origin" repo (on GitHub)
+-> the name of our remote is "origin" and the default local branch name is master. The -u tells Git to remember the parameters, so that next time we can simply run git push and Git will know what to do.
+$ git push -u origin master
+
+1.12 Pulling remotely
+-> Let's pretend some time has passed. We've invited other people to our GitHub project who have pulled your changes, made their own commits, and pushed them.
+-> We can check for changes on our GitHub repository and pull down any new changes by running
+$ git pull origin master
+$ git stash # sometimes when you go to pull you may have changes you don't want to commit just yet. One option you have, other than committing, is to stash the changes. Use the command 'git stash' to stash our changes, and 'git stash apply' to re-apply your changes after you pull
+
+1.13 Differences
+-> If there have been some additions and changes to the octocat family, let's take a look at what is fifferent from our last commit by using "git diff" command. In this case we want the diff of our most recent commit, which we can refer to using the HEAD pointer.
+-> The HEAD is a pointer that holds your position within all your different commits. By default, HEAD points to your most recent commit, so it can be used as a quick way to reference that commit without having to look up the SHA
+$ git diff HEAD
+
+1.14 Staged Differences
+-> Another great use for diff is looking at changes within files that have already been staged. Remember, staged files are file we have told Git that are already to be committed.
+-> Use "git add" to stafe "octofamily/octodog.txt", which I just added to the family for you.
+$ git add octofamily/octodog.txt
+
+1.15 Staged Differences (continued)
+-> run "git diff" with the "--staged" option to see the changes you just staged.
+$ git diff --staged
+
+1.16 Resetting the Stage
+-> so now that octodog is part of the family, octocat is all depressed. Since we love octocat more than octodog, we'll turn his frown around by removing octodog.txt.
+-> We can unstage files using  the git reset command.
+$ git reset octo family/octodog.txt
+
+1.17 Undo
+-> git reset did a great job of unstaging octodog.txt, but you'll notice that he's still there. He's just not staged anymore. It would be great if we could go back to how things were before octodog came around and ruined the party.
+-> Files can be changed back to how they were at the last commit by using the command: "git checkout -- <target>"
+-> The '--': it's simply promising the command line that there are no more option after the '--'. This way if you happen to have a branch named octocat.txt. It will revert the file, instead of switching to the branch of the same name.
+$ git checkout -- octocat.txt
+
+1.18 Branching out
+-> When developers are working on a feature or bug they'll often create a copy (aka, branch) or their code they can make separate commits to. Then when they're done they can merge this branch back
+-> branches are what naturally happens when you want to work on multiple features at the same time. You wouldn't want to end up with a master branch which has Features A half done and Feature B half done.
+-> Rather you'd separate the code into two "snapshots" (branches) and work on and commit to them separately. As soon as one was ready, you might merge this branch back into the master branch and push it to the remote server.
+-> remove all these pesky octocats, so let's create a branch called clean_up, where we'll do all the work
+$git branch clean_up
+
+1.19 Switching Branches
+-> we can use "git checkout -b new_branch" to checkout and create a branch at the same time. This is the same thing as doing: "git branch new_branch" and "git checkout new_branch
+-> You can switch branches using the "git checkout <branch>" command
+
+1.20 Removing All the Things
+-> will not only remove the actual files from disk, but will also stage the removal of the files
+$ git rm '*.txt'
+-> remove an entire folder (remove all folders and files fromo the given dierectory)
+$git rm -r folder_of_cats
+
+1.21 Comitting Branch Changes
+-> If you happen to delete a file without using 'git rm' you'll find that you still have to 'git rm' the deleted files from the working tree. We can save this step by using the '-a' option on 'git commit', which auto removes deleted files with the commit 'git commit -am "Delete stuff"'
+$git commit -m "Removes all the cats"
+
+1.22 Switching Back to Master
+-> sometimes, we need to switch back to the master branch so you can copy (or merge) our changes from the "clean_up" branch back into the master branch
+-> If we're hosting our repo on GitHub, we can do something called a pull request. A pull request allows the boss of the project to look through our changes and make comments before deciding to merge in the change. It's a really great feature that is used all the time for remote workers and open-source project.
+
+1.23 Preparing to merge
+-> When we have to merge our changes from the "clean_up" branch into the master branch, we're already on the master branch, so we need to tell Git to merge the "clean_up" branch into it:
+$ git merge clean_up
+-> merge conflicts can occur when changes are made to a file at the same time. A lot of people get really scared when a conflict happens, but fear not! They aren't that scary, we just need to decide which code to keep.
+
+1.24 Keeping things Clean
+Delete a branch that you don't need it anymore
+$ git branch -d clean_up
+-> -d won't let we delete soomething that hasn't been merged. We can either add the --force(-f) option or use -d which combines -d -f together into one command
+
+1.25 The Final Push
+push everything we've been working on to our remote repository
+git push

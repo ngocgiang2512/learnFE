@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Git</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="content">
+        <p>Note: 1.18</p>
+        <section>
+            <h3>Các khái niệm</h3>
+            <p><b>Directory:</b>a folder used for storing multiple files - Directory là nơi chứa các file.</p>
+            <p><b>Repository:</b>a directory where Git has been initialize to start version controlling our files - Repository là một thư mục nơi Git quản lý version các file của chúng ta.</p>
+            <p><b>untracked:</b>newly created files but aren't tracked by Git yet</p>
+            <p><b>unstaged:</b>files with change that have not been prepared to be committed</p>
+            <p><b>staged:</b>files are already to be committed</p>
+            <p><b>deleted:</b>files have been deleted and is waiting to be removed from Git</p>
+            <p><b>Staging area:</b>files are not in our repository yet, we could add or remove files from the stage before we store them in the repository</p>
+            <p><b>Commit:</b>a snapshot of our repository</p>
+            <p><b>GitHub:</b>a remote server</p>
+            <p><b>local repository:</b>repositories on our computer</p>
+            <p><b>remote repository:</b>repositories on remote server, each remote repo has it's name and URL. Our typical repo's name is "origin"</p>
+            <p><b>HEAD:</b> the Head is a pointer that holds your position within all our different commits. By default, HEAD points to our most recent commit.</p>
+        </section>
+
+        <section>
+            <h3>Các câu lệnh cơ bản</h3>
+            <p><b>$ git init</b>- initialize a Git repository</p>
+            <p><b>$ git status</b>- check current state of our project</p>
+            <p><b>$ git add file-name.txt</b>- add file to the staging area, and Git start tracking changes made to this/these file(s)</p>
+            <p><b>$ git commit -m "Add filename.txt file"</b>- store our staged changes, changes to be committed</p>
+            <p><b>$ git log --summary</b>see information for each commit</p>
+            <p><b>$ git remote add origin https://github.com/try-git/try_git.git</b>- add a remote repo, this command takes a remote name and a repo URL. Our typical repo's name is "origin"</p>
+            <p><b>$ git push -u origin master</b>- push our local changes to our origin repo (on GitHub), "origin" is the name of our remote, "master" is the default local branch name, -u tell Git to remember the parameters, so that next time we can simply run <b>$ git push</b>and Git will know what todo</p>
+            <p><b>$ git pull origin master</b>- check for changes on our GitHub repository and pull down any new changes</p>
+            <p><b>$ git stash</b>- sometimes we go to pull, we may have changes we don't want to commit, use this command</p>
+            <p><b>$ git stash apply</b>- re-apply our changes after pull</p>
+            <p><b>$ git diff HEAD</b>- see different from our last commit</p>
+            <p><b>$ git diff --staged</b>- see the changes we just staged</p>
+            <p><b>$ git reset octofamily/octodog.txt</b>- unstage files, remove files have been added</p>
+            <p><b>$ git checkout -- octocat.txt</b>- change files back to how they were at the last commit</p>
+        </section>
+
+        <section>
+            <h3>Source:</h3>
+            <ul>
+                <li><a href="https://try.github.io/levels/1/challenges/1">Code School</a></li>
+            </ul>
+        </section>
+
+    </div>
+</body>
+</html>

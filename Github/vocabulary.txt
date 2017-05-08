@@ -1,0 +1,9 @@
+Vocabulary
+- Directory: a folder used for storing multiple files.
+- Repository: a directory where Git has been initialized to start version controlling your file.
+- staged: files are ready to committed
+- unstaged: files with changes that not have been prepared to be dted
+- untracked: files aren't tracked by Git yet. This usually indicates a newly created file
+- deleted: files has been deleted and is waiting to be removed from Git
+- staging area: a place where we can group files together before we "commit" them to Git
+- commit: a "commit" is a snapshot of our repository. This way if we ever need to look back at the changes we've made (or if someone else does), we will see a nice timeline of all changes
