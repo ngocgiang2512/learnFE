@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Class</title>
+</head>
+<body>
+  <div id="output"></div>
+  <div id="output2"></div>
+  <div id="output3"></div>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+    /* ES6 Class */
+    console.log('ES6 - class')
+
+    class Point {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+      }
+      toString() {
+        return `(${this.x}, ${this.y})`;
+      }
+    }
+
+    class ColorPoint extends Point {
+      constructor(x, y, color) {
+        super(x, y);
+        this.color = color;
+      }
+      toString() {
+        return super.toString() + ' in ' + this.color
+      }
+    }
+
+    const cp = new ColorPoint(25, 8, 'red');
+    
+    document.getElementById('output').innerHTML = cp.toString();
+    document.getElementById('output2').innerHTML = cp instanceof ColorPoint;
+    document.getElementById('output3').innerHTML = cp instanceof Point;
+  </script> 
+</body>
+</html>
