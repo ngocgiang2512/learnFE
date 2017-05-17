@@ -118,6 +118,10 @@ class ReactForm extends React.Component {
               {years.map((year, index) => <option key={index} value={year}>{year}</option>)}
             </select>
           </div>
+          <div className="row clearfix">
+            <p className="label">Description</p>
+            <textarea type="text" name="description" value={data.description} onChange={this.changeTextInput}></textarea>
+          </div>
         </div>
         <button type="button" onClick={this.printInfo}>Print Information</button>
       </div>

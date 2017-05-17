@@ -5,5 +5,6 @@ export default {
   sex: 'male',
   year: '',
   month: '',
-  day: ''
+  day: '',
+  description: ''
 }
