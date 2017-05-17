@@ -7,7 +7,7 @@ var Component1 = React.createClass({
     }
   },
 
-  handleOnClick: function() {
+  updateState: function() {
     this.setState({value: this.state.value + 1})
   },
 
@@ -16,7 +16,7 @@ var Component1 = React.createClass({
       <div>
         <p>React.createClass</p>
         <p>Value: {this.state.value}</p>
-        <button type="button" onClick={this.handleOnClick}>Increment</button>
+        <button type="button" onClick={this.updateState}>Increment</button>
       </div>
     );
   }

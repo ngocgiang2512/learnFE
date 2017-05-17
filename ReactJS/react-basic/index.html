@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang = "en">
-   <head>
-      <meta charset = "UTF-8">
-      <title>React App</title>
-   </head>
-   <body>
-      <div id = "app"></div>
-      <script src = "index.js"></script>
-   </body>
+  <head>
+    <meta charset = "UTF-8">
+    <title>React App</title>
+    <style>
+      .clearfix {
+        &:before,
+        &:after {
+          content: "";
+          display: table;
+        }
+        &:after {
+          clear: both;
+        }
+      }
+      a {
+        text-decoration: none;
+      }
+      .active {
+        color: red;
+      }
+      .header {
+        text-align: center;
+        margin: 30px 0;
+      }
+      .sidebar {
+        float: left;
+        width: 30%;
+      }
+      .main-content {
+        float: left;
+        width: 70%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id = "app"></div>
+    <script src = "index.js"></script>
+  </body>
 </html>
