@@ -15,10 +15,12 @@ class App extends React.Component {
               <li><NavLink to="/component/01">Component 1</NavLink></li>
               <li><NavLink to="/component/02">Component 2</NavLink></li>
               <li><NavLink to="/props">Props</NavLink></li>
+              <li><NavLink to="/form">Form</NavLink></li>
               <li><NavLink to="/componentLifeCycle">Component Life Cycle</NavLink></li>
+              <li><NavLink to="/silentLetter">Silent Letters</NavLink></li>
             </ul>
           </div>
-          <div className="mainContent">
+          <div className="main-content">
             {this.props.children}
           </div>
         </div>
