@@ -1,0 +1,44 @@
+My Side Project Note
+
+Truy cập website github.com, đăng nhập tài khoản ngocgiang2512, tạo 1 repo mới, đặt tên repo mới là SideProject
+Copy repo's url, tạo 1 thư mục clone của repo SideProject trên máy tính ở local
+tạo file .gitignore thêm node_modules
+
+setup environment: nodejs, npm, express
+
+khởi tạo npm: npm init
+
+khởi tạo express server:
+var express = require('express');
+var app = express();
+app.listen(8000);
+$node index.js
+truy cập: localhost:8000
+
+url: http://localhost:8000/hello
+domain: http://localhost:8000
+port: 8000
+route: /hello
+
+get/post method
+để test post method, ta sử dụng postman, là 1 extension của Google Chrome
+
+passing parameter
+app.get('/user/:id', function(req, res){
+  var id = req.params.id;
+  res.send('Parameter passed: ' + id)
+});
+
+install body-parser
+npm i body-parser --save
+
+$git status
+$git add .
+$git status
+$git commit -m 'commit message'
+$git push origin master
+
+// day 2
+install ejs, socket.io
+$npm i ejs --save
+$npm i socket.io --save
