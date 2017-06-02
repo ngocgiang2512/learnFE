@@ -1,0 +1,11 @@
+1. javascript
+2. NodeJS
+3. Reactjs
+4. Expressjs
+5. Socketio
+5. Webpack
+6. ES6
+
+-------------------------------------------
+
+1.1
