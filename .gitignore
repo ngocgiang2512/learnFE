@@ -1,5 +1,6 @@
 .DS_STORE
 *.log
+*.map
 
 node_modules
 prepros.cfg
