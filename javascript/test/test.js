@@ -1,21 +1,12 @@
-console.log('test');
-
-function Book(title, pages, isbn) {
-  this.title = title;
-  this.pages = pages;
-  this.isbn = isbn;
-  this.printIsbn = function() {
-    console.log(this.isbn);
-  }
+function sum(num1, num2) {
+  return num1 + num2;
 }
 
-var book = new Book('Great Gatsby', 'page', 'isbn');
-
-console.log(book.title);
-book.printIsbn();
-
-Book.prototype.printTitle = function() {
-  console.log(this.title);
+function output(text) {
+  console.log(text);
 }
 
-book.printTitle();
+square = (num) => num * num
+
+output(sum(2,3));
+output(square(3));
