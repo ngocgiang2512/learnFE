@@ -36,9 +36,6 @@ function toString() {
   var retstr = '';
   for (var i = 0; i < this.dataStore.length; ++i) {
     retstr += this.dataStore[i] + ' ';
-    if (i > 0 && i % 10 === 9 ) {
-      retstr += '\n';
-    }
   }
   return retstr;
 }
@@ -49,10 +46,10 @@ function swap(arr, index1, index2) {
   arr[index2] = temp;
 }
 
-var numElements = 10000;
+var numElements = 20;
 var myNums = new CArray(numElements);
 myNums.setData();
-// console.log(myNums.toString());
+console.log(myNums.toString());
 
 /* the buble sort */
 function bubleSort() {
@@ -116,6 +113,18 @@ start = new Date().getTime();
 myNums.insertionSort();
 stop = new Date().getTime();
 elapsed = stop - start;
+console.log(myNums.toString());
 console.log('Elapsed time for the insertion sort on ' + numElements + ' elements is: ' + elapsed + ' milliseconds')
+
+/* sort function */
+function compare(num1, num2) {
+  return num1 - num2;
+}
+
+start = new Date().getTime();
+myNums.dataStore.sort(compare);
+stop = new Date().getTime();
+elapsed = stop -start;
+console.log('Elapsed time for the sort function on ' + numElements + ' elements is: ' + elapsed + ' milliseconds')
 
 
