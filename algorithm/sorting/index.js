@@ -8,6 +8,8 @@ function CArray(numElements) {
   this.setData = setData;
   this.swap = swap;
   this.bubleSort = bubleSort;
+  this.selectionSort = selectionSort;
+  this.insertionSort = insertionSort;
 
   for (var i = 0; i < this.numElements; ++i) {
     this.dataStore[i] = i;
@@ -47,24 +49,73 @@ function swap(arr, index1, index2) {
   arr[index2] = temp;
 }
 
-var numElements = 10;
+var numElements = 10000;
 var myNums = new CArray(numElements);
 myNums.setData();
-console.log(myNums.toString());
+// console.log(myNums.toString());
 
 /* the buble sort */
 function bubleSort() {
   var numElements = this.dataStore.length;
   var temp;
   for (var outer = numElements; outer >= 2; --outer) {
-    for (var inner = 0; inner <= outer - 1; ++inner) {
+    for (var inner = 0; inner < outer - 1; ++inner) {
       if (this.dataStore[inner] > this.dataStore[inner + 1]) {
         swap(this.dataStore, inner, inner + 1);
       }
     }
-    console.log(this.toString());
+    // console.log(this.toString());
   }
 }
 
+var start = new Date().getTime();
 myNums.bubleSort();
-console.log(myNums.toString());
+var stop = new Date().getTime();
+var elapsed = stop - start;
+console.log('Elapsed time for the buble sort on ' + numElements + ' elements is: ' + elapsed + ' milliseconds');
+
+/* the selection sort */
+function selectionSort() {
+  var numElements = this.dataStore.length;
+  var min, temp;
+  for (var outer = 0; outer < numElements -1; ++outer) {
+    min = outer;
+    for (var inner = outer + 1; inner < numElements; ++inner) {
+      if (this.dataStore[inner] < this.dataStore[min]) {
+        min = inner;
+      }
+    }
+    swap(this.dataStore, outer, min);
+    // console.log(this.toString());
+  }
+}
+
+start = new Date().getTime();
+myNums.selectionSort();
+stop = new Date().getTime();
+elapsed = stop - start;
+console.log('Elapsed time for the selection sort on ' + numElements + ' elements is: ' + elapsed + ' milliseconds');
+
+/* the insertion sort */
+function insertionSort() {
+  var numElements = this.dataStore.length;
+  var temp, inner;
+  for (var outer = 1; outer < numElements; ++outer) {
+    temp = this.dataStore[outer];
+    inner = outer;
+    while (inner > 0 && (this.dataStore[inner - 1] >= temp)) {
+      this.dataStore[inner] = this.dataStore[inner -1];
+      --inner;
+    }
+    this.dataStore[inner] = temp;
+    // console.log(this.toString());
+  }
+}
+
+start = new Date().getTime();
+myNums.insertionSort();
+stop = new Date().getTime();
+elapsed = stop - start;
+console.log('Elapsed time for the insertion sort on ' + numElements + ' elements is: ' + elapsed + ' milliseconds')
+
+
